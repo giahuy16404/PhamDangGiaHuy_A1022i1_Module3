@@ -21,6 +21,7 @@ CREATE TABLE orderdetail(
 	oid INT,
     pid INT,
     odqty NVARCHAR(50) NOT NULL,
+    PRIMARY KEY (oid,pid),
     FOREIGN  KEY (oid) REFERENCES orders(oid),
     FOREIGN KEY (pid) REFERENCES product(pid)
     );

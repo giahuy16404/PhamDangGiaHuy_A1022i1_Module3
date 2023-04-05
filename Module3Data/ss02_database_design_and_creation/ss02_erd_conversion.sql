@@ -4,7 +4,6 @@ CREATE TABLE phieuxuat(
 	idpx INT AUTO_INCREMENT PRIMARY KEY,
     ngayxuat date NOT NULL
     );
-    
 CREATE TABLE vattu(
 	idvattu INT AUTO_INCREMENT PRIMARY KEY,
     namevattu NVARCHAR(50) NOT NULL
@@ -29,6 +28,7 @@ CREATE TABLE chitietphieuxuat(
     idvattu INT,
     donxuat NVARCHAR(50) NOT NULL,
     soluongxuat int NOT NULL,
+    PRIMARY KEY (idpx,idvattu),
     FOREIGN KEY (idpx) REFERENCES phieuxuat(idpx),
     FOREIGN KEY (idvattu) REFERENCES vattu(idvattu)
     );
@@ -37,20 +37,16 @@ CREATE TABLE chitietphieunhap(
     idphieunhap INT,
 	donnhap NVARCHAR(50) NOT NULL,
     soluongnhap INT NOT NULL,
+    PRIMARY KEY (idvattu,idphieunhap),
     FOREIGN KEY (idvattu) REFERENCES vattu(idvattu),
     FOREIGN KEY (idphieunhap) REFERENCES phieunhap(idphieunhap)
     );
 CREATE TABLE chitietdondathang(
 	idvattu INT,
     idsodathang INT,
+    PRIMARY KEY(idvattu,idsodathang),
     FOREIGN KEY (idvattu) REFERENCES vattu(idvattu),
     FOREIGN KEY (idsodathang) REFERENCES dondathang(idsodathang)
-    );
-CREATE TABLE cungcap(
-	idsodathang INT,
-    idnhacungcap INT,
-	FOREIGN KEY (idsodathang) REFERENCES dondathang(idsodathang),
-	FOREIGN KEY (idnhacungcap) REFERENCES nhacungcap(idnhacungcap)
     );
 CREATE TABLE sdtnhacungcap(
 	idnhacungcap INT,
