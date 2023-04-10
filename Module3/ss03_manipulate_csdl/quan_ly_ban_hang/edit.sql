@@ -12,8 +12,7 @@ INNER JOIN product ON orderdetail.pid = product.pid;
 -- Hiển thị tên những khách hàng không mua bất kỳ một sản phẩm nào
 SELECT customer.cid,customer.cname FROM customer
 LEFT JOIN orders ON customer.cid = orders.cid
-LEFT JOIN orderdetail ON product.pid = orderdetail.pid
-WHERE orders.odqty IS NULL;
+WHERE orders.oid IS NULL;
 
 -- Hiển thị mã hóa đơn, ngày bán và giá tiền của từng hóa đơn 
 -- (giá một hóa đơn được tính bằng tổng giá bán của từng loại mặt hàng xuất hiện trong hóa đơn. Giá bán của từng loại được tính = odQTY*pPrice)
