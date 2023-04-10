@@ -5,9 +5,9 @@ SELECT * FROM orders;
 
 -- Hiển thị danh sách các khách hàng đã mua hàng, và danh sách sản phẩm được mua bởi các khách
 SELECT customer.cid, customer.cname, product.pname  FROM customer 
-INNER JOIN orders ON customer.cid = orders.cid
-INNER JOIN orderdetail ON orders.oid = orderdetail.oid
-INNER JOIN product ON orderdetail.pid = product.pid;
+ JOIN orders ON customer.cid = orders.cid
+ JOIN orderdetail ON orders.oid = orderdetail.oid
+ JOIN product ON orderdetail.pid = product.pid;
 
 -- Hiển thị tên những khách hàng không mua bất kỳ một sản phẩm nào
 SELECT customer.cid,customer.cname FROM customer
