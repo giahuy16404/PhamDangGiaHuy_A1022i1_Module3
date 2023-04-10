@@ -16,10 +16,11 @@ WHERE orders.oid IS NULL;
 
 -- Hiển thị mã hóa đơn, ngày bán và giá tiền của từng hóa đơn 
 -- (giá một hóa đơn được tính bằng tổng giá bán của từng loại mặt hàng xuất hiện trong hóa đơn. Giá bán của từng loại được tính = odQTY*pPrice)
-SELECT orders.oid, orders.odate, SUM(orderdetail.odqty * product.pprice) FROM orders
+SELECT orders.oid, orders.odate, SUM(orderdetail.odqty * product.pprice) 
+FROM orders
 JOIN orderdetail ON orders.oid = orderdetail.oid
 JOIN product ON orderdetail.pid = product.pid
-GROUP BY orders.oid, orderdetail.pid;
+GROUP BY orders.oid, orderdetail.oid;
 
 
 
