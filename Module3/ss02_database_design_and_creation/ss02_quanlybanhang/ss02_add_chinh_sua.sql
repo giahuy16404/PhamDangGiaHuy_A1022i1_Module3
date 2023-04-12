@@ -11,7 +11,8 @@ ROLLBACK;
 COMMIT;
 DELETE FROM orders;
 DELETE FROM customer;
-UPDATE customer set cname = 'Vy' WHERE cid = 5;
+UPDATE customer set cname = 'Vy' 
+WHERE cid = 5;
 ALTER TABLE customer auto_increment = 1;
 ALTER TABLE orders auto_increment = 1;
 
