@@ -67,6 +67,16 @@ VALUE	(1,1,'Pham Van Phuoc','1981-09-16',1,'10218123','0905756744','phamvanphuoc
         (9,4,'Hanna Moos','1958-01-09',1,'23424','12412412','gdfger@gmail.com','Nghe An'),
 		(10,4,'Martín Sommer','1960-05-29',0,'5152252','546456','ergerg@gmail.com','Quang Nam');
 DELETE FROM khanh_hang;
+INSERT INTO khach_hang(ma_khach_hang,ma_loai_khach,ho_ten,ngay_sinh,gioi_tinh,so_cmnd,so_dien_thoai,email,dia_chi)
+VALUE	(11,1,'Pham Dang Gia Vy','2011-09-16',1,'10218123','02326744','pham123uoc@gmail.com','Da Nang'),
+		(12,2,'Hoang Cong Gia','2012-09-20',0,'5152252','0712318465','dangthithanhthanh@gmail.com','Da Nang'),
+        (13,3,'12312312ste','1968-12-08',1,'22331','2312412','rq123123@gmail.com','Hoi An');
+        
+INSERT INTO khach_hang(ma_khach_hang,ma_loai_khach,ho_ten,ngay_sinh,gioi_tinh,so_cmnd,so_dien_thoai,email,dia_chi)
+VALUE	
+		(14,1,'Hoang Cong Gia','2002-09-20',0,'5152252','0712318465','dangthithanhthanh@gmail.com','Da Nang'),
+        (15,3,'12312312ste','1999-12-08',1,'22331','2312412','rq123123@gmail.com','Hoi An'),
+        (16,4,'Pham Dang Gia Vy','2001-09-16',1,'10218123','02326744','pham123uoc@gmail.com','Da Nang');
 SELECT * FROM khach_hang;
 
 -- Kiểu Thuê
@@ -99,7 +109,99 @@ VALUE 	(1,'Villa Dao Tien',30,999.00,20,2,1,'Phong Vvip','tien nghi khac',20,5),
         (10,'Room tien nu giang tran',12,299.00,20,3,3,'Phong Vvip','','',3);
 DELETE FROM dich_vu;
 SELECT * FROM dich_vu;
+
+-- Dữ liệu hợp đồng
+INSERT INTO hop_dong(ma_hop_dong,ngay_lam_hop_dong,ngay_ket_thuc,tien_dat_coc,ma_nhan_vien,ma_khach_hang,ma_dich_vu)
+VALUE	(1,'2012-02-23 12:00:00','2012-04-23 12:00:00',2000.00,3,2,2),
+		(2,'2012-03-13 12:00:00','2012-04-21 12:00:00',120.00,4,3,4),
+        (3,'2012-06-22 12:00:00','2012-07-23 12:00:00',1232.00,6,5,4),
+        (4,'2012-05-12 12:00:00','2012-06-23 12:00:00',23000.00,7,6,6),
+        (5,'2012-07-23 12:00:00','2012-07-25 12:00:00',12000.00,8,7,1),
+        (6,'2012-06-23 12:00:00','2012-06-26 12:00:00',600.00,5,9,10),
+        (7,'2012-08-23 12:00:00','2012-08-27 12:00:00',6000.00,4,7,1),
+        (8,'2012-02-23 12:00:00','2012-02-25 12:00:00',1200.00,6,4,10),
+        (9,'2012-02-27 12:00:00','2012-03-1 12:00:00',3200.00,5,6,8),
+        (10,'2012-03-23 12:00:00','2012-04-01 12:00:00',3000.00,7,2,2);
+INSERT INTO hop_dong(ma_hop_dong,ngay_lam_hop_dong,ngay_ket_thuc,tien_dat_coc,ma_nhan_vien,ma_khach_hang,ma_dich_vu)
+VALUE	(11,'2021-02-23 12:00:00','2021-04-23 12:00:00',2000.00,3,2,2),
+		(12,'2023-03-13 12:00:00','2023-04-21 12:00:00',120.00,4,3,4),
+        (13,'2022-06-22 12:00:00','2022-07-23 12:00:00',1232.00,6,5,4);
+INSERT INTO hop_dong(ma_hop_dong,ngay_lam_hop_dong,ngay_ket_thuc,tien_dat_coc,ma_nhan_vien,ma_khach_hang,ma_dich_vu)
+VALUE	(14,'2020-02-23 12:00:00','2021-04-23 12:00:00',2000.00,3,2,5);
+		
+INSERT INTO hop_dong(ma_hop_dong,ngay_lam_hop_dong,ngay_ket_thuc,tien_dat_coc,ma_nhan_vien,ma_khach_hang,ma_dich_vu)
+VALUE	(16,'2020-02-23 12:00:00','2021-04-23 12:00:00',2000.00,3,2,1),
+		(17,'2021-03-13 12:00:00','2021-04-21 12:00:00',120.00,4,3,9);
+        
+INSERT INTO hop_dong(ma_hop_dong,ngay_lam_hop_dong,ngay_ket_thuc,tien_dat_coc,ma_nhan_vien,ma_khach_hang,ma_dich_vu)
+VALUE	(19,'2020-02-23 12:00:00','2021-04-23 12:00:00',2000.00,3,2,1);
+	
+
+        
+INSERT INTO hop_dong(ma_hop_dong,ngay_lam_hop_dong,ngay_ket_thuc,tien_dat_coc,ma_nhan_vien,ma_khach_hang,ma_dich_vu)
+VALUE	(20,'2020-02-23 12:00:00','2020-04-23 12:00:00',2000.00,7,2,1),
+		(21,'2020-03-13 12:00:00','2020-04-21 12:00:00',120.00,6,3,9),
+        (22,'2020-06-22 12:00:00','2020-07-23 12:00:00',1232.00,4,5,4);
+
+
+
+SELECT * FROM	hop_dong;
+
+-- Dịch vụ đi kèm.
+INSERT INTO dich_vu_di_kem(ma_dich_vu_di_kem,ten_dich_vu_di_kem,gia,don_vi,trang_thai)
+VALUE	(1,'massage','120.0','Resort','OFF'),
+		(2,'karaoke','220.0','Resort','OFF'),
+        (3,'nước uống','10.0','Resort','ON'),
+        (4,'thuê xe di chuyển tham quan resort','200.0','Resort','ON');
+INSERT INTO dich_vu_di_kem(ma_dich_vu_di_kem,ten_dich_vu_di_kem,gia,don_vi,trang_thai)
+VALUE	(5,'máy bay','120.0','Resort','OFF');
+
+SELECT	* FROM	dich_vu_di_kem;
+
+-- Hợp đồng chi tiết.
+INSERT INTO hop_dong_chi_tiet(ma_hop_dong_chi_tiet,ma_hop_dong,ma_dich_vu_di_kem,so_luong)
+VAlUE	(1,1,4,1),
+		(2,2,2,2),
+        (3,3,3,1),
+        (4,4,1,4),
+        (5,5,2,2),
+        (6,6,2,3),
+        (7,7,3,1),
+        (8,8,3,2),
+        (9,9,1,5),
+        (10,10,4,2);
+INSERT INTO hop_dong_chi_tiet(ma_hop_dong_chi_tiet,ma_hop_dong,ma_dich_vu_di_kem,so_luong)
+VAlUE	(11,10,3,10);
+INSERT INTO hop_dong_chi_tiet(ma_hop_dong_chi_tiet,ma_hop_dong,ma_dich_vu_di_kem,so_luong)
+VAlUE	(12,11,5,1);
+
+
+SELECT * FROM hop_dong_chi_tiet;
+	
+		
 				
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

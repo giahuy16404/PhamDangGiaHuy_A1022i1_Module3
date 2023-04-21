@@ -16,4 +16,3 @@ GROUP BY student.student_id
 ORDER BY AVG(mark.mark) DESC;
 
 
-
