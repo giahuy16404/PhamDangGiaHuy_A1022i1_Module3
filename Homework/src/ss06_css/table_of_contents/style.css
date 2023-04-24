@@ -1,0 +1,14 @@
+#header{
+    width: 50%;
+    margin: auto;
+}
+
+#header_left {
+    float: left;}
+#header_right{
+    float: right;
+}
+#header_left_right{
+
+    overflow: auto;
+}
