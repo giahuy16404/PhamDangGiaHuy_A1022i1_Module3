@@ -4,29 +4,27 @@ body {
     margin: 0;
 }
 
-#header_menu {
+header {
     height: 60px;
     padding: 0px;
     margin: 0px;
     background-color: #000000;
     border: 0px solid aliceblue;
     z-index: 2;
-    position: fixed;
+    position: absolute;
     top: 0;
     width: 100%;
 }
 
-#header_menu ul, #header_menu li {
+#header_menu > ul , li {
     padding: 0px;
-    margin: 0px;
+    margin: auto;
+    position: absolute;
 }
 
 #header_menu_img {
     float: left;
     height: 60px;
-    width: 100px;
-    padding-top: 0px;
-
 }
 
 #header_menu li {
@@ -39,6 +37,9 @@ body {
 
 
 }
+/*#main{*/
+/*    position: relative;*/
+/*}*/
 
 #header_menu li a {
     width: 100px;
@@ -95,18 +96,23 @@ body {
 }
 
 #main_left {
-    position: absolute;
+    position: relative;
     top: 60px;
+    float: left;
     left: 0;
     bottom: 0px;
     width: 250px;
     background-color: #fda0d2;
     z-index: 0;
 }
+#main{
+    position: absolute;
+}
 
 #main_right {
-    position: absolute;
+    position: relative;
     top: 60px;
+    float:  right;
     right: 0;
     bottom: 0px;
     width: 250px;
@@ -129,7 +135,6 @@ body {
 footer {
     position: fixed;
     bottom: 0;
-    left: 0;
     height: 40px;
     width: 100%;
     background-color: #757373;
@@ -137,7 +142,6 @@ footer {
     color: #c4c9cb;
     font-size: 20px;
     padding-bottom: 10px;
-
 }
 
 
