@@ -1,0 +1,24 @@
+.box{
+    border:  solid 1px;
+}
+.content_text{
+    margin-top: 20px;
+}
+body{
+    font-size: 18px;
+}
+@media only screen and (min-width: 700px) {
+    .row > div{
+        flex: 25%;
+    }
+}
+@media only screen and (max-width: 700px) {
+    .row > div{
+        flex: 50%;
+    }
+}
+@media only screen and (max-width: 500px) {
+    .row > div{
+        flex: 100%;
+    }
+}
