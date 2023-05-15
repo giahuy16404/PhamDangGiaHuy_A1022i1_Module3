@@ -19,7 +19,7 @@ public class ProductServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
         if (action == null) {
-            action = "list";
+            action = "";
         }
         switch(action){
             case "create":
@@ -38,6 +38,9 @@ public class ProductServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
+        if (action == null) {
+            action = "";
+        }
         switch(action){
             case "create":{
                 doCreate(request,response);
@@ -51,13 +54,24 @@ public class ProductServlet extends HttpServlet {
                 doDelete(response,request);
                 break;
             }
+            case "view":{
+                doView(request,response);
+            }
             default:{
-                response.sendRedirect("/ProductServlet?action=list");
+                showList(request,response);
             }
 
         }
 
     }
+
+    private void doView(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        Product product = service.findById(id);
+        request.setAttribute("productView",product);
+        request.getRequestDispatcher("/ProductServlet?action=null").forward(request,response);
+    }
+
     private void doCreate(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         int id = Integer.parseInt(request.getParameter("id"));
         String name = request.getParameter("name");

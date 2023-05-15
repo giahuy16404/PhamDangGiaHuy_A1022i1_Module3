@@ -13,7 +13,10 @@ repositories {
 ext {
     junitVersion = '5.9.1'
 }
-
+dependencies {
+    compileOnly group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
+    implementation group: 'javax.servlet', name: 'jstl', version: '1.2'
+}
 sourceCompatibility = '1.8'
 targetCompatibility = '1.8'
 
@@ -23,11 +26,9 @@ tasks.withType(JavaCompile) {
 
 dependencies {
     compileOnly('javax.servlet:javax.servlet-api:4.0.1')
-    implementation group: 'javax.servlet', name: 'jstl', version: '1.2'
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
-    compileOnly group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
 }
 
 test {

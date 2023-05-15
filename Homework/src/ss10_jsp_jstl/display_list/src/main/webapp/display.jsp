@@ -1,4 +1,5 @@
-<%@ taglib prefix="c" uri="" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%--
   Created by IntelliJ IDEA.
   User: VICTUS
@@ -14,7 +15,7 @@
 <body>
 <h1>Danh Sach Khach Hang</h1>
 <br>
-<table>
+<table >
     <tr>
         <td>Tên</td>
         <td>Ngày Sinh</td>
@@ -26,7 +27,7 @@
             <td>${ent.name}</td>
             <td>${ent.birthday}</td>
             <td>${ent.location}</td>
-            <td><img src="${ent.pictures}"></td>
+            <td><img src="${ent.pictures}" width="40px" height="40px" ></td>
         </tr>
     </c:forEach>
 </table>

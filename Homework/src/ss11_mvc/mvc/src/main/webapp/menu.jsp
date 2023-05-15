@@ -31,28 +31,71 @@
 <body>
 <h1>All product</h1>
 <div id="list-product">
-    <table class="table">
-        <thead class="thead-dark">
-        <tr>
-            <td>id</td>
-            <td>name</td>
-            <td>price</td>
-            <td>quantity</td>
-            <td>origin</td>
-        </tr>
-        </thead>
-        <c:forEach items="${list}" var="p">
+    <c:if test="${ !not empty productView}">
+        <table class="table">
+            <thead class="thead-dark">
+            <tr>
+                <td>id</td>
+                <td>name</td>
+                <td>price</td>
+                <td>quantity</td>
+                <td>origin</td>
+            </tr>
+            </thead>
+            <c:forEach items="${list}" var="p">
+                <tbody>
+                <tr>
+                    <td>${p.id}</td>
+                    <td>${p.name}</td>
+                    <td>${p.price}</td>
+                    <td>${p.quantity}</td>
+                    <td>${p.origin}</td>
+                </tr>
+                </tbody>
+            </c:forEach>
+        </table>
+    </c:if>
+    <c:if test="${not empty productView}">
+        <table class="table">
+            <thead class="thead-dark">
+            <tr>
+                <td>id</td>
+                <td>name</td>
+                <td>price</td>
+                <td>quantity</td>
+                <td>origin</td>
+            </tr>
+            </thead>
             <tbody>
             <tr>
-                <td>${p.id}</td>
-                <td>${p.name}</td>
-                <td>${p.price}</td>
-                <td>${p.quantity}</td>
-                <td>${p.origin}</td>
+                <td>${productView.id}</td>
+                <td>${productView.name}</td>
+                <td>${productView.price}</td>
+                <td>${productView.quantity}</td>
+                <td>${productView.origin}</td>
             </tr>
             </tbody>
-        </c:forEach>
-    </table>
+        </table>
+    </c:if>
+    <form action="/ProductServlet?action=view" method="post">
+        <table>
+            <tr>
+                <td><h3>View product by id</h3></td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="number" name="id" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="view">
+                </td>
+
+            </tr>
+        </table>
+    </form>
+
 </div>
 <!--CREATE -->
 <div id="create">

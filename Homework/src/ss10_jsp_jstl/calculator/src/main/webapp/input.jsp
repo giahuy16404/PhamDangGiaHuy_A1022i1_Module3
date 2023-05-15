@@ -53,7 +53,7 @@
       </tr>
       <tr>
         <td><label for="second_operand">Second operand: </label> </td>
-        <td> <input type="number" name="second_operand" id="second_operand"></td>
+        <td> <input type="number" name="second_operand" id="second_operand" required></td>
       </tr>
       <tr>
         <td></td>
