@@ -4,7 +4,7 @@ import bean.Customer;
 
 import java.util.List;
 
-public interface ICustomer {
+public interface ICustomerService {
     Boolean add(Customer customer);
 
     List<Customer> showList();

@@ -7,10 +7,60 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-  <head>
-    <title>$Title$</title>
-  </head>
-  <body>
-  $END$
-  </body>
+<head>
+    <title>showMenu</title>
+    <link href="cssShowMenu.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+
+    <header>
+        <div id="header-one">
+            <div id="header-logo">
+                <a href="#">
+                    <img src="—Pngtree—lovely macarone ice cream color_7126031.png" id="logo">
+                </a>
+            </div>
+            <div id="header-text">
+                <h3>Quản Lý Khu Nghỉ Dưỡng Furama</h3>
+            </div>
+            <div id="name-login">
+                <p>Name-Login</p>
+            </div>
+        </div>
+        <div id="header-two">
+            <nav>
+                <a href="/MenuServlet">Home</a>
+                <a href="#">Employee</a>
+                <a href="/MenuServlet?object=/CustomerServlet">Customer</a>
+                <a href="#">Service</a>
+                <a href="#">Contract</a>
+            </nav>
+            <form id="header-search">
+                <input type="submit" value="Submit" class="submit-button">
+                <input type="text" class="search-input" placeholder="search">
+            </form>
+        </div>
+    </header>
+
+    <main>
+        <div id="main-left">
+
+        </div>
+        <div id="main-right">
+
+        </div>
+    </main>
+    <footer>
+        <div id="footer-main">
+            <div id="footer-text">
+                <h4>Footer...</h4>
+            </div>
+        </div>
+    </footer>
+</div>
+</body>
+
 </html>

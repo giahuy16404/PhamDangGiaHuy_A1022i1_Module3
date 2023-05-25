@@ -1,13 +1,14 @@
 package repository;
 
 import bean.Customer;
-import repository.itf.ICustomer;
+import repository.itf.ICustomerRepository;
 import repository.query_db.QueryDBCustomer;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
-public class CustomerImlp implements ICustomer {
+public class CustomerRepositoryImlp implements ICustomerRepository {
     @Override
     public boolean add(Customer customer) {
         Connection connection = ConnectDB.getConnection();
@@ -45,14 +46,38 @@ public class CustomerImlp implements ICustomer {
         Connection connection = ConnectDB.getConnection();
         Statement statement = null;
         ResultSet resultSet = null;
+        List<Customer> list = new ArrayList<>();
+        Customer customer = null;
         if (connection != null){
-            statement = connection.createStatement();
-            resultSet = statement.executeQuery(QueryDBCustomer.SELECT_CUSTOMER);
-            while (resultSet.next()){
-                int
+            try {
+                statement = connection.createStatement();
+                resultSet = statement.executeQuery(QueryDBCustomer.SELECT_CUSTOMER);
+                while (resultSet.next()){
+                    int id = resultSet.getInt("customer_id");
+                    int typeId = resultSet.getInt("customer_type_id");
+                    String name = resultSet.getString("customer_name");
+                    String birthday = resultSet.getString("customer_birthday");
+                    String gender = resultSet.getString("customer_gender");
+                    String idCard = resultSet.getString("customer_id_card");
+                    String phone = resultSet.getString("customer_phone");
+                    String email = resultSet.getString("customer_email");
+                    String address = resultSet.getString("customer_address");
+                    customer = new Customer(id,typeId,name,birthday,gender,idCard,phone,email,address);
+                    list.add(customer);
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }finally {
+                try {
+                    resultSet.close();
+                    statement.close();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+                ConnectDB.close();
             }
         }
-        return null;
+        return list;
     }
 
     @Override
