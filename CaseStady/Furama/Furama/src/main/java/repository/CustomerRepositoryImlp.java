@@ -24,7 +24,7 @@ public class CustomerRepositoryImlp implements ICustomerRepository {
                 statement.setString(6, customer.getPhone());
                 statement.setString(7, customer.getEmail());
                 statement.setString(8, customer.getAddress());
-                statement.setInt(9, customer.getTypeID());
+                statement.setString(9, customer.getTypeID());
                 statement.executeUpdate();
             } catch (SQLException e) {
                 throw new RuntimeException(e);
@@ -54,7 +54,7 @@ public class CustomerRepositoryImlp implements ICustomerRepository {
                 resultSet = statement.executeQuery(QueryDBCustomer.SELECT_CUSTOMER);
                 while (resultSet.next()){
                     int id = resultSet.getInt("customer_id");
-                    int typeId = resultSet.getInt("customer_type_id");
+                    String typeId = resultSet.getString("customer_type_id");
                     String name = resultSet.getString("customer_name");
                     String birthday = resultSet.getString("customer_birthday");
                     String gender = resultSet.getString("customer_gender");

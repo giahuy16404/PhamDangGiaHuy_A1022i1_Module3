@@ -122,17 +122,16 @@
     <main id="main_product">
 
         <table>
-            <c:if test="${not empty productList}">
                 <tr>
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myUpdateModal">
-                        edit
+                        Edit
                     </button>
 
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myDeleteModal">
                         Delete
                     </button>
 
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myDeleteModal">Add
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myAddModal">Add
                     </button>
                 </tr>
                 <tr>
@@ -149,56 +148,9 @@
                         <td>${list.amount}</td>
                     </tr>
                 </c:forEach>
-            </c:if>
-            <c:if test="${not empty productById}">
-                <tr>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myUpdateModal">
-                        Edit
-                    </button>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myDeleteModal">
-                        Delete
-                    </button>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myAddModal">Add
-                    </button>
-                </tr>
-                <tr>
-                    <th>Mã sản phẩm</th>
-                    <th>Tên sản phẩm</th>
-                    <th>Giá sản phẩm</th>
-                    <th>Số lượng</th>
-                </tr>
-                <tr>
-                    <td>${productById.id}</td>
-                    <td>${productById.name}</td>
-                    <td>${productById.price}</td>
-                    <td>${productById.amount}</td>
-                </tr>
-            </c:if>
 
-            <c:if test="${ not empty customerList}">
-                <tr>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myUpdateModal">
-                        edit
-                    </button>
 
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myDeleteModal">
-                        Delete
-                    </button>
 
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myDeleteModal">Add
-                    </button>
-                </tr>
-                <tr>
-                    <th>ID</th>
-                    <th>Ho Va Ten</th>
-                </tr>
-                <c:forEach var="list" items="${customerList}">
-                    <tr>
-                        <td>${list.id}</td>
-                        <td>${list.name}</td>
-                    </tr>
-                </c:forEach>
-            </c:if>
         </table>
         <div class="modal fade" id="myUpdateModal">
             <div class="modal-dialog">
@@ -208,15 +160,19 @@
                         <h4 class="modal-title">Update</h4>
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
-                    <form action="/UserServlet" method="post">
+                    <form action="/ProductServlet" method="post">
                         <!-- Modal body -->
                         <div class="modal-body">
 
                             <label for="idUpdate">id</label>
                             <input type="number" class="form-control" name="idUpdate" id="idUpdate">
+<c:forEach var="list" items="${productList}">
+    <label for="nameUpdate">Name:${list.name}</label>
+</c:forEach>
 
                             <label for="nameUpdate">Name:</label>
                             <input type="text" class="form-control" name="nameUpdate" id="nameUpdate">
+
 
                             <label for="priceUpdate">Price:</label>
                             <input type="number" class="form-control" name="priceUpdate" id="priceUpdate">
@@ -234,7 +190,7 @@
                                             <a href="/ProductServlet" class="btn btn-primary">Close </a>
                                         </td>
                                         <td>
-                                            <input type="submit" class="btn btn-primary" value="edit" name="action">
+                                            <input type="submit" class="btn btn-primary" value="Edit" name="action">
                                         </td>
                                     </tr>
                                 </table>
@@ -259,7 +215,7 @@
                         <h4 class="modal-title">Update</h4>
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
-                    <form action="/UserServlet" method="post">
+                    <form action="/ProductServlet" method="post">
                         <!-- Modal body -->
                         <div class="modal-body">
 
@@ -303,7 +259,7 @@
                         <h4 class="modal-title">Add</h4>
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
-                    <form action="/UserServlet" method="post">
+                    <form action="/ProductServlet" method="post">
                         <!-- Modal body -->
                         <div class="modal-body">
 
@@ -317,7 +273,7 @@
                             <input type="number" class="form-control" name="priceAdd" id="priceAdd">
 
                             <label for="amountAdd">amount:</label>
-                            <input type="text" class="form-control" name="amountUpdate" id="amountAdd">
+                            <input type="text" class="form-control" name="amountAdd" id="amountAdd">
                         </div>
                         <!-- Pop-Up -->
                         <div id="xmas-popup-Add" class="popup" href="#">
@@ -326,7 +282,7 @@
                                     <tr>You definitely want to Add the object</tr>
                                     <tr>
                                         <td>
-                                            <a href="/ProductServlet" class="btn btn-primary">Add </a>
+                                            <a href="/ProductServlet" class="btn btn-primary">Close </a>
                                         </td>
                                         <td>
                                             <input type="submit" class="btn btn-primary" value="Add" name="action">

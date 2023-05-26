@@ -108,6 +108,6 @@ public class ProductServlet extends HttpServlet {
     public void showList(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
         List<Product> list = service.findAll();
         request.setAttribute("list",list);
-        request.getRequestDispatcher("/menu.jsp").forward(request,response);
+        request.getRequestDispatcher("WEB-INF/menu.jsp").forward(request,response);
     }
 }

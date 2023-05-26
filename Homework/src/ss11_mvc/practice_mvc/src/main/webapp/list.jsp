@@ -28,9 +28,9 @@
         </tr>
         <c:forEach items='${requestScope["customerList"]}' var="customer">
             <tr>
-                <td><a href="/customerServlet?action=view&id=${customer.getId()}">${customer.getName()}</a></td>
-                <td><a href="/customerServlet?action=email&id=${customer.getId()}">${customer.getEmail()}</a></td>
-                <td><a href="/customerServlet?action=address&id=${customer.getId()}">${customer.getAddress()}</a></td>
+                <td>${customer.getName()}</td>
+                <td>${customer.getEmail()}</td>
+                <td>${customer.getAddress()}</td>
                 <td><a href="/customerServlet?action=edit&id=${customer.getId()}">edit</a></td>
                 <td><a href="/customerServlet?action=delete&id=${customer.getId()}">delete</a></td>
             </tr>
