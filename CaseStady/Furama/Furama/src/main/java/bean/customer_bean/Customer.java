@@ -1,7 +1,10 @@
-package bean;
+package bean.customerBean;
+
+import bean.customerBean.CustomerType;
 
 public class Customer {
-    private int id;
+    private String id;
+    private CustomerType type;
     private String name;
     private String birthday;
     private String gender;
@@ -9,13 +12,13 @@ public class Customer {
     private String phone;
     private String email;
     private String address;
-    private int typeID;
 
     public Customer() {
     }
 
-    public Customer(int id,int typeID , String name, String birthday, String gender, String idCard, String phone, String email, String address ) {
+    public Customer(String id, CustomerType type, String name, String birthday, String gender, String idCard, String phone, String email, String address) {
         this.id = id;
+        this.type = type;
         this.name = name;
         this.birthday = birthday;
         this.gender = gender;
@@ -23,18 +26,22 @@ public class Customer {
         this.phone = phone;
         this.email = email;
         this.address = address;
-        this.typeID = typeID;
     }
 
-
-
-
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
+    }
+
+    public CustomerType getType() {
+        return type;
+    }
+
+    public void setType(CustomerType type) {
+        this.type = type;
     }
 
     public String getName() {
@@ -91,13 +98,5 @@ public class Customer {
 
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public int getTypeID() {
-        return typeID;
-    }
-
-    public void setTypeID(int typeID) {
-        this.typeID = typeID;
     }
 }
