@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="ss14_dependency">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/out/artifacts/ss14_dependency_jar/ss14_dependency.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

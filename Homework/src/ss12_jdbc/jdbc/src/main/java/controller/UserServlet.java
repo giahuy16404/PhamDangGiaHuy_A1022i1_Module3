@@ -1,12 +1,14 @@
 package controller;
 
 import bean.User;
+import repository.DBConnection;
 import repository.UserDao;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -126,15 +128,39 @@ public class UserServlet extends HttpServlet {
         String email = request.getParameter("email");
         String country = request.getParameter("country");
         user = new User(name, email, country);
+
+        Connection connection = null;
         try {
-            userDao.insertUser(user);
+            connection = DBConnection.getConnection(); // Obtain the connection object from userDao
+            connection.setAutoCommit(false); // Disable auto-commit
+
+            userDao.insertUser(user); // Perform the insert operation
+
+            connection.commit(); // Commit the transaction
+
+            try {
+                request.getRequestDispatcher("WEB-INF/create.jsp").forward(request, response);
+            } catch (ServletException | IOException e) {
+                throw new RuntimeException(e);
+            }
         } catch (SQLException | ClassNotFoundException e) {
+            if (connection != null) {
+                try {
+                    connection.rollback(); // Rollback the transaction if an exception occurs
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
             throw new RuntimeException(e);
-        }
-        try {
-            request.getRequestDispatcher("WEB-INF/create.jsp").forward(request, response);
-        } catch (ServletException | IOException e) {
-            throw new RuntimeException(e);
+        } finally {
+            if (connection != null) {
+                try {
+                    connection.setAutoCommit(true); // Re-enable auto-commit
+                    connection.close(); // Close the connection
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
         }
     }
 
